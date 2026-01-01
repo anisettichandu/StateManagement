@@ -82,8 +82,8 @@ render(){
         <div className="c">
         
         <h1>Count:{this.state.count}</h1>
-        <button onClick={this.increment} style={{backgroundColor:"green"}}>Increment</button> &nbsp;
-        <button onClick={()=>{this.decrement()}} style={{backgroundColor:"red"}} >Decrement</button> &nbsp;
+        <button onClick={this.increment} style={{backgroundColor:""}}>Increment</button> &nbsp;
+        <button onClick={()=>{this.decrement()}} style={{backgroundColor:""}} >Decrement</button> &nbsp;
         <button onClick={this.reset} style={{backgroundColor:"white"}}>Reset</button></div>
     )
 }

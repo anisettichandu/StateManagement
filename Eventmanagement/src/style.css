@@ -1,53 +1,83 @@
+/* Page */
 body {
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
-    font-family: Arial, sans-serif;
+    background: #020617;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
+/* Card */
 .c {
-     background: linear-gradient(135deg, #6366f1, #7c3aed);
-    color: white;
+    position: relative;
+    background: #0f172a; /* INSIDE COLOR — SAME */
+    color: #e5e7eb;
     width: 320px;
     padding: 30px;
-    border-radius: 18px;
+    border-radius: 14px;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+    /* Gentle movement like video */
+    animation: floatCard 7s ease-in-out infinite;
 }
 
+/* OUTSIDE SHADOW (THIS IS THE KEY PART) */
+.c::after {
+    content: "";
+    position: absolute;
+    inset: -12px;              /* creates space OUTSIDE */
+    border-radius: 18px;
+    z-index: -1;
+
+    /* Soft ambient shadow like video */
+    box-shadow:
+        0 0 40px rgba(245, 226, 164, 0.25),
+        0 0 80px rgba(136, 86, 128, 0.6);
+}
+
+/* Heading */
 .c h1 {
-    font-size: 34px;
+    font-size: 30px;
     margin-bottom: 25px;
-    letter-spacing: 1px;
+    color: #e5e7eb;
 }
 
-.btns {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-
-button {
-    padding: 10px 16px;
-    border-radius: 20px;
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
+/* Buttons */
+.c button {
+    padding: 8px 16px;
+    margin: 6px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background-color: #f8fafc;
+    color: #020617;
+    font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
-
-/* Hover effects */
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+/* Button hover */
+.c button:hover {
+    background-color: #fef3c7;
+    transform: translateY(-2px);
 }
 
-/* Active click effect */
-button:active {
-    transform: scale(0.95);
+/* Button active */
+.c button:active {
+    transform: scale(0.96);
+}
+
+/* Smooth floating */
+@keyframes floatCard {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-14px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
